@@ -3,8 +3,8 @@ FROM python:3.9.15
 RUN pip install --upgrade pip
 
 ADD App.py .
-ADD model_weight ./model_weight
-ADD tokinizer2 .
+COPY model_weight .
+COPY tokinizer2 .
 ADD requirements.txt .
 ADD Load_Model.py .
 ADD Preprocessing.py .
