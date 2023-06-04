@@ -2,7 +2,7 @@ import torch
 from torch import cuda
 from transformers import RobertaTokenizer
 from Load_Model import RobertaClass
-from preprocessing import Senti_Preproc
+from Preprocessing import Senti_Preproc
 import torch.nn.functional as F
 import os
 import json
