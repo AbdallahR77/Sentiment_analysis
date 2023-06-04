@@ -3,7 +3,7 @@ FROM python:3.9.15
 RUN pip install --upgrade pip
 
 ADD App.py .
-COPY model_weight .
+COPY Deploy/model_weight .
 COPY tokinizer2 .
 ADD requirements.txt .
 ADD Load_Model.py .
