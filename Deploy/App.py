@@ -1,7 +1,7 @@
 import torch
 from torch import cuda
-from transformers import RobertaTokenizer
-from Load_Model import RobertaClass
+from transformers import RobertaTokenizer, DistilBertTokenizer
+from Load_Model import *
 from Preprocessing import Senti_Preproc
 import torch.nn.functional as F
 import os
@@ -13,25 +13,24 @@ import gdown
 
 ## Check Cuda
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-model = RobertaClass()
+
+model = DistilBertClass() #RobertaClass()
+model_name = "model_DiziRoBERTa.pt"
 
 # Download model weight if it dosn't exist
-if os.path.exists("model_weight/model_RoBERTa2.pt"):
+if os.path.exists(f"model_weight/{model_name}"):
     print("model weight is exists.")
 else:
-    print("File does not exist.")
 
-## Load the Toknizer and the Model weights 
-if device =="cpu": # map the weights to CPU if there is no GPU
-    model.load_state_dict(torch.load('model_weight/model_RoBERTa2.pt',  map_location=torch.device('cpu')))
-else :
     print("Model Dowenloading")
     file_url = "https://drive.google.com/uc?id=1-2uh9i8sIxwW95KhCff3Bve8Ayz2ifeF"
-    destination_file_path = "model_weight/model_RoBERTa2.pt"  # Replace with the desired destination file path
+    destination_file_path = f"model_weight/{model_name}"  # Replace with the desired destination file path
     gdown.download(file_url, destination_file_path, quiet=False)
-    
 
-Ro_tokenizer = RobertaTokenizer.from_pretrained('tokinizer2')
+
+## Load the model and tokinzer
+model.load_state_dict(torch.load(f'model_weight/{model_name}',  map_location=torch.device(device)))
+Ro_tokenizer = DistilBertTokenizer.from_pretrained('Distiltokinizer')
 
 ## Make Model in Evalution states
 model.eval()
