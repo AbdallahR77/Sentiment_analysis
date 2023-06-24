@@ -17,6 +17,9 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = DistilBertClass() #RobertaClass()
 model_name = "model_DiziRoBERTa.pt"
 
+if os.path.exists(f"model_weight"):
+    os.makedirs("model_weight")
+
 # Download model weight if it dosn't exist
 if os.path.exists(f"model_weight/{model_name}"):
     print("model weight is exists.")
