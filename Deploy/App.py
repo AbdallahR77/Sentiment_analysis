@@ -25,7 +25,7 @@ else:
     print("Model Dowenloading")
     # file_url = "https://drive.google.com/uc?id=1-2uh9i8sIxwW95KhCff3Bve8Ayz2ifeF" ROBERTA Model
     file_url = "https://drive.google.com/uc?id=1pibxdKOg4c4U24kyuTXIsOlvIGrLW6lp"
-    destination_file_path = f"model_weight/{model_name}"  # Replace with the desired destination file path
+    destination_file_path = f"./model_weight/{model_name}"  # Replace with the desired destination file path
     gdown.download(file_url, destination_file_path, quiet=False)
 
 

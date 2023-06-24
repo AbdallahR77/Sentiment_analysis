@@ -4,8 +4,9 @@ RUN pip install --upgrade pip
 
 
 ADD App.py .
-ADD model_weight .
+COPY model_weight .
 COPY tokinizer2 .
+COPY Distiltokinizer .
 ADD requirements.txt .
 ADD Load_Model.py .
 ADD Preprocessing.py .
