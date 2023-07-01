@@ -33,6 +33,7 @@ else:
 
 
 ## Load the model and tokinzer
+print("Loading the model")
 model.load_state_dict(torch.load(f'model_weight/{model_name}',  map_location=torch.device(device)))
 Ro_tokenizer = DistilBertTokenizer.from_pretrained('Distiltokinizer')
 
@@ -41,7 +42,6 @@ model.eval()
 
 ## Test Preprocessing
 Pre_porecessing = Senti_Preproc(Ro_tokenizer)
-
 def Prediction(Model_input):
     with torch.no_grad():
         ids = Model_input['ids'].to(device, dtype = torch.long).unsqueeze(0)
